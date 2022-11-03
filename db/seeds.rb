@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require 'faker'
+
+puts 'Seeding the database...'
+
+PEOPLE = 10
+
+if Person.count < PEOPLE
+  n = PEOPLE - Person.count
+  puts "Creating #{n} People..."
+  n.times do
+    Person.create(
+      name: Faker::Artist.name
+    )
+  end
+end
